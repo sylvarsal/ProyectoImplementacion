@@ -24,7 +24,7 @@
         .card {
             background-color: white;
             width: 400px;
-            padding: 35px 45px;
+            padding: 35px 20px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
             text-align: center;
@@ -63,7 +63,7 @@
             margin-right: 12px;
         }
 
-        /* Efecto al pasar el mouse */
+        /* Efecto de mouse */
         li:hover {
             background-color: #dbeafe;
             transform: translateX(5px);
@@ -89,7 +89,7 @@
         </p>
 
         <ul>
-            <li>Vargas Salgado Sylvia</li>
+            <li>Sylvia Vargas Salgado</li>
             <li>Michelle Olvera Guerra</li>
             <li>Karen Madelene Romero Flores</li>
         </ul>
