@@ -55,7 +55,7 @@
             transition: 0.3s;
         }
 
-        /* Viñeta personalizada */
+        /* Viñetas */
         li::before {
             content: "✦";
             color: #2563eb;
@@ -89,9 +89,9 @@
         </p>
 
         <ul>
-            <li>Syl</li>
-            <li>Mitch</li>
-            <li>Karen</li>
+            <li>Vargas Salgado Sylvia</li>
+            <li>Michelle Olvera Guerra</li>
+            <li>Karen Madelene Romero Flores</li>
         </ul>
 
     </div>
