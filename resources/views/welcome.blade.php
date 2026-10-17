@@ -89,9 +89,9 @@
         </p>
 
         <ul>
-            <li>Sylvia Vargas Salgado</li>
-            <li>Michelle Olvera Guerra</li>
-            <li>Karen Madelene Romero Flores</li>
+            <li>Olvera Guerra Michelle</li>
+            <li>Romero Flores Karen Madelene</li>
+            <li>Vargas Salgado Sylvia</li>
         </ul>
 
     </div>
