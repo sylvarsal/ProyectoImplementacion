@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pedido extends Model
 {
+    protected $table = 'pedido';
+    protected $primaryKey = 'id_pedido';
+    public $timestamps = false;
+    protected $fillable = [
+        'id_estado',
+        'fecha_hora',
+        'total'
+    ];
+    protected $casts = [
+        'fecha_hora' => 'datetime',
+    ];
     public function detallePedido(): HasMany  
     { 
     return $this->hasMany(DetallePedido::class); 

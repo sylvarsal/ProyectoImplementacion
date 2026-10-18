@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('primer_apellido',50);
             $table->string('segundo_apellido',50);
             $table->string('telefono',10);
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

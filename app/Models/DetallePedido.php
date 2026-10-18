@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DetallePedido extends Model
 {
+    protected $table = 'detalle_pedido';
+    protected $primaryKey = 'id_detalle_pedido';
+    public $timestamps = false;
+    protected $fillable = [
+        'id_pedido',
+        'id_producto',
+        'id_cliente',
+        'cantidad',
+        'precio_individual',
+        'subtotal'
+    ];
     public function producto(): BelongsTo 
     { 
     return $this->belongsTo(Producto::class); 

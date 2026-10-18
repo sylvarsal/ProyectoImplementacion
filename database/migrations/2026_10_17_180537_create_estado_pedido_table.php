@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('estado_pedido', function (Blueprint $table) {
             $table->id('id_estado_pedido');
             $table->string('nombre_estado',20);
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

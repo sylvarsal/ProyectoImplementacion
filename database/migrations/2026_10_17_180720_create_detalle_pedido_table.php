@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('cantidad');
             $table->decimal('precio_individual', 8,2);
             $table->decimal('subtotal', 8, 2);
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('id_estado')->constrained('estado_pedido', 'id_estado_pedido');
             $table->dateTime('fecha_hora');
             $table->decimal('total', 8, 2);
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 
