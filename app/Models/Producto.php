@@ -20,11 +20,11 @@ class Producto extends Model
     ];
     public function detallePedido(): HasMany 
     { 
-    return $this->hasMany(DetallePedido::class); 
+        return $this->hasMany(DetallePedido::class, 'id_producto', 'id_producto');
     }
 
     public function estadoProducto(): BelongsTo
     { 
-    return $this->belongsTo(EstadoProducto::class); 
+        return $this->belongsTo(EstadoProducto::class, 'id_estado_producto', 'id_estado_producto');
     }
 }

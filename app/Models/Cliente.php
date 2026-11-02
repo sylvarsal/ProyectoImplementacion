@@ -18,6 +18,6 @@ class Cliente extends Model
     ];
     public function detallePedido(): HasMany 
     { 
-    return $this->hasMany(DetallePedido::class); 
+        return $this->hasMany(DetallePedido::class, 'id_cliente', 'id_cliente');
     } 
 }

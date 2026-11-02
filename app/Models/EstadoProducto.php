@@ -15,7 +15,7 @@ class EstadoProducto extends Model
     ];
     public function producto(): HasMany 
     { 
-    return $this->hasMany(Producto::class); 
+        return $this->hasMany(Producto::class, 'id_estado_producto', 'id_estado_producto');
     } 
 
 }
