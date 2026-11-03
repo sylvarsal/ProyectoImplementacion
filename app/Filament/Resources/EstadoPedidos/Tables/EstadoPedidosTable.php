@@ -20,28 +20,13 @@ class EstadoPedidosTable
                     ->sortable(),
                 TextColumn::make('nombre_estado')
                     ->label('Estado del Pedido')
-                    ->searchable()
-                    ->badge()
-                    ->color(fn (string $state): string => match (strtolower($state)) {
-                        'recibido' => 'gray',
-                        'en preparación' => 'warning',
-                        'listo' => 'info',
-                        'entregado' => 'success',
-                        'cancelado' => 'danger',
-                        default => 'primary',
-                    }),
+                    ->searchable(),
             ])
             ->filters([
                 //
             ])
-            ->recordActions([
-                EditAction::make(),
-                DeleteAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->recordActions([])
+            ->toolbarActions([])
+            ->recordUrl(null);
     }
 }

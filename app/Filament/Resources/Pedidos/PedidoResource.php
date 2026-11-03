@@ -8,6 +8,7 @@ use App\Filament\Resources\Pedidos\Pages\ListPedidos;
 use App\Filament\Resources\Pedidos\Schemas\PedidoForm;
 use App\Filament\Resources\Pedidos\Tables\PedidosTable;
 use App\Models\Pedido;
+use App\Models\Producto;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -18,9 +19,13 @@ class PedidoResource extends Resource
 {
     protected static ?string $model = Pedido::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedShoppingCart;
 
-    protected static ?string $recordTitleAttribute = 'Pedido';
+    protected static ?string $recordTitleAttribute = 'id_pedido';
+
+    protected static ?string $modelLabel = 'pedido';
+
+    protected static ?string $pluralModelLabel = 'pedidos';
 
     public static function form(Schema $schema): Schema
     {
@@ -46,5 +51,28 @@ class PedidoResource extends Resource
             'create' => CreatePedido::route('/create'),
             'edit' => EditPedido::route('/{record}/edit'),
         ];
+    }
+
+    public static function calcularTotal(array $filas): float
+    {
+        $total = 0;
+
+        foreach ($filas as $fila) {
+            $precio = Producto::find($fila['id_producto'] ?? null)?->precio ?? 0;
+            $total += $precio * (int) ($fila['cantidad'] ?? 0);
+        }
+
+        return round($total, 2);
+    }
+
+    public static function datosDetalle(array $data, mixed $idCliente): array
+    {
+        $precio = Producto::find($data['id_producto'])->precio;
+
+        $data['precio_individual'] = $precio;
+        $data['subtotal'] = round($precio * (int) $data['cantidad'], 2);
+        $data['id_cliente'] = $idCliente;
+
+        return $data;
     }
 }

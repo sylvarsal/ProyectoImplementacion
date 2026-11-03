@@ -36,18 +36,11 @@ class ProductosTable
                 TextColumn::make('stock')
                     ->label('Existencia')
                     ->numeric()
-                    ->sortable()
-                    ->badge()
-                    ->color(fn (int $state): string => $state <= 3 ? 'danger' : 'success'),
-                TextColumn::make('estadoProducto.nombre_estado')
+                    ->sortable(),
+               
+                    TextColumn::make('estadoProducto.nombre_estado')
                     ->label('Estado')
-                    ->sortable()
-                    ->badge()
-                        ->color(fn (string $state): string => match (strtolower($state)) {
-                            'disponible' => 'success',
-                            'agotado' => 'danger',
-                            default => 'gray',
-                        }),
+                    ->sortable(),
             ])
             ->filters([
                 SelectFilter::make('id_estado_producto')

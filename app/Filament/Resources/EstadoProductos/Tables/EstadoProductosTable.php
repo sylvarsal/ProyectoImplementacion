@@ -20,25 +20,13 @@ class EstadoProductosTable
                     ->sortable(),
                 TextColumn::make('nombre_estado')
                     ->label('Estado del Producto')
-                    ->searchable()
-                    ->badge()
-                    ->color(fn (string $state): string => match (strtolower($state)) {
-                        'disponible' => 'success',
-                        'agotado' => 'danger',
-                        default => 'gray',
-                    }),
+                    ->searchable(),
             ])
             ->filters([
                 //
             ])
-            ->recordActions([
-                EditAction::make(),
-                DeleteAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->recordActions([])
+            ->toolbarActions([])
+            ->recordUrl(null);
     }
 }

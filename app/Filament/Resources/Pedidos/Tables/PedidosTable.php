@@ -2,8 +2,7 @@
 
 namespace App\Filament\Resources\Pedidos\Tables;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
+use App\Models\Pedido;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -14,26 +13,30 @@ class PedidosTable
     {
         return $table
             ->columns([
-                TextColumn::make('id_estado')
-                    ->numeric()
+                TextColumn::make('id_pedido')
+                    ->label('N.º')
                     ->sortable(),
+
+                TextColumn::make('cliente')
+                    ->label('Cliente')
+                    ->state(fn (Pedido $record) => $record->detallePedido->first()?->cliente?->nombre_pila),
+
+                TextColumn::make('estadoPedido.nombre_estado')
+                    ->label('Estado'),
+
                 TextColumn::make('fecha_hora')
-                    ->dateTime()
+                    ->label('Fecha y hora')
+                    ->dateTime('d/m/Y H:i')
                     ->sortable(),
+
                 TextColumn::make('total')
-                    ->numeric()
+                    ->label('Total')
+                    ->money('MXN')
                     ->sortable(),
             ])
-            ->filters([
-                //
-            ])
+            ->defaultSort('fecha_hora', 'desc')
             ->recordActions([
                 EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
             ]);
     }
 }

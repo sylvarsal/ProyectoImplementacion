@@ -10,26 +10,28 @@ class DetallePedido extends Model
     protected $table = 'detalle_pedido';
     protected $primaryKey = 'id_detalle_pedido';
     public $timestamps = false;
+
     protected $fillable = [
         'id_pedido',
         'id_producto',
         'id_cliente',
         'cantidad',
         'precio_individual',
-        'subtotal'
+        'subtotal',
     ];
-    public function producto(): BelongsTo 
-    { 
-    return $this->belongsTo(Producto::class); 
-    } 
 
-    public function pedido(): BelongsTo 
-    { 
-    return $this->belongsTo(Pedido::class);
+    public function producto(): BelongsTo
+    {
+        return $this->belongsTo(Producto::class, 'id_producto', 'id_producto');
     }
 
-    public function cliente(): BelongsTo 
-    { 
-    return $this->belongsTo(Cliente::class);
+    public function pedido(): BelongsTo
+    {
+        return $this->belongsTo(Pedido::class, 'id_pedido', 'id_pedido');
+    }
+
+    public function cliente(): BelongsTo
+    {
+        return $this->belongsTo(Cliente::class, 'id_cliente', 'id_cliente');
     }
 }

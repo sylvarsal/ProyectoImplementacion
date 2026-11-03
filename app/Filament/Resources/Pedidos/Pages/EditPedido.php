@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Pedidos\Pages;
 
 use App\Filament\Resources\Pedidos\PedidoResource;
-use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditPedido extends EditRecord
@@ -15,19 +14,20 @@ class EditPedido extends EditRecord
         return $this->getResource()::getUrl('index');
     }
 
-    protected function getCreatedSavedTitle(): ?string
+    protected function getSavedNotificationTitle(): ?string
     {
         return 'Pedido actualizado exitosamente';
     }
 
     protected function getHeaderActions(): array
     {
-        return [
-            DeleteAction::make(),
-        ];
+        return [];
+    }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $data['total'] = PedidoResource::calcularTotal($this->data['detallePedido'] ?? []);
+
+        return $data;
     }
 }
-
-
-
-
