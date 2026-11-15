@@ -29,9 +29,11 @@ class ClienteForm
                     ->required()
                     ->length(10)
                     ->regex('/^[0-9]{10}$/')
+                    ->unique(table: 'cliente', column: 'telefono', ignoreRecord: true)
                     ->validationMessages([
                         'regex' => 'El teléfono debe contener únicamente 10 dígitos numéricos.',
                         'length' => 'El teléfono debe tener exactamente 10 dígitos.',
+                        'unique' => 'El teléfono ya se encuentra registrado.'
                     ]),
             ]);
     }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre_pila',50);
             $table->string('primer_apellido',50);
             $table->string('segundo_apellido',50);
-            $table->string('telefono',10);
+            $table->string('telefono',10)->unique();
             //$table->timestamps();
         });
     }
