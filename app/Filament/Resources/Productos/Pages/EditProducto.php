@@ -23,7 +23,12 @@ class EditProducto extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::make(),
+            DeleteAction::make()
+                ->hidden(function ($record) {
+                    return $record->detallePedido()->whereHas('pedido', function($query) {
+                        $query->whereIn('id_estado', [1, 2]);
+                    })->exists();
+                }),
         ];
     }
 }

@@ -55,7 +55,12 @@ class ProductosTable
             ->recordActions([
                 EditAction::make(),
                 DeleteAction::make()
-                    ->modalHeading('¿Estás seguro que quieres eliminar el/los producto(s)?'),
+                    ->modalHeading('¿Estás seguro que quieres eliminar el/los producto(s)?')
+                    ->hidden(function ($record) {
+                        return $record->detallePedido()->whereHas('pedido', function($query) {
+                            $query->whereIn('id_estado', [1, 2]);
+                        })->exists();
+                    }),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
