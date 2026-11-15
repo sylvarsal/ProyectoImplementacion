@@ -9,6 +9,7 @@ use Filament\Tables\Table;
 use Filament\Actions\Action;
 use App\Models\EstadoPedido;
 use Filament\Notifications\Notification;
+use Filament\Tables\Filters\SelectFilter;
 
 class PedidosTable
 {
@@ -45,6 +46,11 @@ class PedidosTable
                     ->label('Total')
                     ->money('MXN')
                     ->sortable(),
+            ])
+            ->filters([
+                SelectFilter::make('id_estado_pedido')
+                    ->label('Filtrar por Estado')
+                    ->relationship('estadoPedido', 'nombre_estado'),
             ])
             ->defaultSort('fecha_hora', 'desc')
             ->actions([
