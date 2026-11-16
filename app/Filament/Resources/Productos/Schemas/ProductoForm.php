@@ -23,7 +23,13 @@ class ProductoForm
                     ->relationship('estadoProducto', 'nombre_estado')
                     ->required()
                     ->preload()
-                    ->searchable(),
+                    ->searchable()
+                    ->rules([
+                        fn ($get) => $get('stock') > 0 ? 'not_in:2' : ''
+                    ])
+                    ->validationMessages([
+                        'not_in' => 'No puedes marcar el producto como agotado si hay existencias.'
+                    ]),
                 TextInput::make('descripcion')
                     ->label('Descripción')
                     ->required()
